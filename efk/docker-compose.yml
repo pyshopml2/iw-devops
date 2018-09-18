@@ -6,7 +6,7 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/var/fluent_logs'
+      device: 'var/fluent_logs'
 
 networks:
   fluentd:
@@ -21,28 +21,17 @@ services:
     volumes: 
       - "fluent_logs:/fluentd/log"
       - "./fluent.conf:/fluentd/etc/fluent.conf"
-    links:
-      - "elasticsearch"
-    ports:
-      - "24224:24224"
-      - "24224:24224/udp"
     networks:
       fluentd:
         ipv4_address: 172.30.0.10
 
   elasticsearch:
     image: elasticsearch
-    expose: 
-      - 9200
-    ports:
-      - "9200:9200"
     networks:
       - fluentd
 
   kibana:
     image: kibana
-    links:
-      - "elasticsearch"
     ports:
       - "5601:5601"
     networks:
