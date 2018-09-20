@@ -1,0 +1,2 @@
+FROM docker.elastic.co/beats/metricbeat:6.4.1
+COPY ./metricbeat.yml /usr/share/metricbeat/metricbeat.yml
