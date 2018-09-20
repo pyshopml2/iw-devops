@@ -16,7 +16,7 @@ metricbeat.modules:
       - memory
       - network
     enabled: true    
-    hosts: ["unix:///var/run/docker/sock"]
+    hosts: ["unix:///var/run/docker.sock"]
     period: 5s
 output.elasticsearch: 
   hosts: 
