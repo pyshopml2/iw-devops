@@ -21,5 +21,5 @@ metricbeat.modules:
 output.elasticsearch: 
   hosts: 
       - "elasticsearch:9200"
-  setup.kibana: 
-    host: "kibana:5601"
+setup.kibana: 
+  host: "kibana:5601"
