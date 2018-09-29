@@ -5,7 +5,8 @@ services:
     build: .
     image: nginx/log
     ports:
-      - "80:9090"
+      - "9090:8080"
     volumes:
-      - ./var/jenkins/buildlog:/usr/share/nginx/www/logs
+      - /var/jenkins/buildlog:/usr/share/nginx/www/logs
     container_name: listoflog
+    restart: always
