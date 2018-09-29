@@ -1,0 +1,11 @@
+version : "2"
+
+services:
+  www:
+    build: .
+    image: nginx/log
+    ports:
+      - "80:9090"
+    volumes:
+      - ./var/jenkins/buildlog:/usr/share/nginx/www/logs
+    container_name: listoflog
