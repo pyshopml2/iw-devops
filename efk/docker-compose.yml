@@ -19,6 +19,8 @@ services:
 
   elasticsearch:
     image: elasticsearch
+    environment:
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     networks:
       - fluentd
 
@@ -33,5 +35,9 @@ services:
     build: ./metricbeat
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./metricbeat/metricbeat.yml:/metricbeat/metricbeat.yml"
+      - "/proc:/hostfs/proc"
+      - "/sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro"
+      - "/:/hostfs:ro"
     networks:
       - fluentd
