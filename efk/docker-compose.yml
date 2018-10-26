@@ -33,9 +33,12 @@ services:
 
   metricbeat:
     build: ./metricbeat
+    image: mbeat
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./metricbeat/metricbeat.yml:/metricbeat/metricbeat.yml"
+      - "./metricbeat/system.yml:/metricbeat/modules.d/system.yml"
+      - "./metricbeat/nginx.yml:/metricbeat/modules.d/nginx.yml"
       - "/proc:/hostfs/proc"
       - "/sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro"
       - "/:/hostfs:ro"

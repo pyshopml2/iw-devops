@@ -1,5 +1,9 @@
 version : "2"
 
+networks:
+  efk_fluentd:
+    external: true
+
 services:
   www:
     build: .
@@ -10,3 +14,11 @@ services:
       - /var/jenkins/buildlog:/usr/share/nginx/www/logs
     container_name: listoflog
     restart: always
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: 172.30.0.10:24224
+        tag: nginx
+    networks:
+      efk_fluentd:
+        ipv4_address: 172.30.0.112
