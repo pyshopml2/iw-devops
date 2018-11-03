@@ -1,11 +1,11 @@
 version: '2'
 
 networks:
-  fluentd:
+  hostnet:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.30.0.0/24
+        - subnet: 172.18.0.0/24
 
 volumes:
   esdata:
@@ -18,8 +18,8 @@ services:
       - "./fluent_logs:/fluentd/log"
       - "./fluent.conf:/fluentd/etc/fluent.conf"
     networks:
-      fluentd:
-        ipv4_address: 172.30.0.10
+      hostnet:
+        ipv4_address: 172.18.0.10
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.4.1
@@ -35,14 +35,14 @@ services:
         soft: -1
         hard: -1
     networks:
-      - fluentd
+      - hostnet
 
   kibana:
     image: docker.elastic.co/kibana/kibana:6.4.1
     ports:
       - "5601:5601"
     networks:
-      - fluentd
+      - hostnet
 
   metricbeat:
     build: ./metricbeat
@@ -56,4 +56,4 @@ services:
       - "/sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro"
       - "/:/hostfs:ro"
     networks:
-      - fluentd
+      - hostnet
