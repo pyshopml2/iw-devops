@@ -1,4 +1,4 @@
 - module: mongodb
   metricsets: ["collstats","dbstats", "status"]
-  hosts: ["mongodb://$DB_USER:$DB_PASSWORD@database:27017?authenticationDatabase=admin"]
+  hosts: ["mongodb://$DB_USER:$DB_PASSWORD@database:27017/ico_world_db"]
   period: 5s
