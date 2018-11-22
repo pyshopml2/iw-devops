@@ -2,16 +2,14 @@ version: '2'
 
 networks:
   hostnet:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.18.0.0/24
+    external: true
 
 volumes:
   esdata:
     driver: local
 
 services:
+  
   fluentd:
     build: .
     volumes: 

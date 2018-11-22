@@ -7,7 +7,7 @@
   period: 10s
 
   # Nginx hosts
-  hosts: ["http://172.30.0.112:8080"]
+  hosts: ["http://172.18.0.130:80"]
 
   # Path to server status. Default server-status
   server_status_path: "server-status"
