@@ -45,6 +45,8 @@ services:
   metricbeat:
     build: ./metricbeat
     image: mbeat
+    env_file:
+      - /var/icoworld/.metricbeat.env
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./metricbeat/metricbeat.yml:/metricbeat/metricbeat.yml"
