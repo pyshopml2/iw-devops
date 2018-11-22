@@ -57,5 +57,5 @@ services:
       - "/:/hostfs:ro"
     networks:
       - hostnet
-    external-links:
+    external_links:
       - database
