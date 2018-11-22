@@ -1,0 +1,6 @@
+- module: mongodb
+  metricsets: ["collstats","dbstats", "status"]
+  hosts: ["172.18.0.112:27017"]
+  period: 5s
+  username: $DB_USER
+  password: $DB_PASSWORD
