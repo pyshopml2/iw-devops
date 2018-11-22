@@ -1,0 +1,4 @@
+- module: mongodb
+  metricsets: ["status","dbstats","collstats"]
+  period: 10s
+  hosts: ["mongodb://icodb:ghwzbH99WAR3@database:27017/ico_world_db"]
